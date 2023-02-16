@@ -1,6 +1,3 @@
-import os
-
-
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -9,11 +6,23 @@ LOGGING = {
             'format': '{levelname} - {asctime} - {module} - {process:d} - {thread:d} - {message}',
             'style': '{',
         },
+        'http_formatter': {
+            'format': '{levelname} - {asctime} - {module} - {process:d} - {unique_id} - {thread:d} - {message}',
+            'style': '{',
+            'class': 'project.log_formatters.MyFormatter' # Путь к классу MyFormatter
+        },
         'console': {
             'format': '%(name)-12s %(levelname)-8s %(message)s'
         },
     },
     'handlers': {
+        'http_handler': {
+            'level': 'DEBUG',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу MyFormatter
+            'filename': os.path.join(BASE_DIR, 'logs/'),
+            'formatter': 'http_formatter',
+            'log_type': 'info',
+        },
         'critical': {
             'level': 'CRITICAL',
             'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
@@ -82,5 +91,10 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'http_logger': {
+            'handlers': ['http_handler'],
+            'level': 'DEBUG',
+            'propagate': True,
+        }
     },
 }
