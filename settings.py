@@ -16,7 +16,7 @@ LOGGING = {
     'handlers': {
         'critical': {
             'level': 'CRITICAL',
-            'class': 'women.log_handlers.InfoHandler',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
             'filename': os.path.join(BASE_DIR, 'logs/'), # Или любой путь куда юзер, запускающий сервер имеет доступ
             'formatter': 'verbose',
             'log_type': 'critical'
@@ -24,7 +24,7 @@ LOGGING = {
         'error': {
             'level': 'ERROR',
             'filters': ['error_only'],
-            'class': 'women.log_handlers.InfoHandler',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
             'filename': os.path.join(BASE_DIR, 'logs/'), # Или любой путь куда юзер, запускающий сервер имеет доступ
             'formatter': 'verbose',
             'log_type': 'error'
@@ -32,7 +32,7 @@ LOGGING = {
         'warning': {
             'level': 'WARNING',
             'filters': ['warning_only'],
-            'class': 'women.log_handlers.InfoHandler',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
             'filename': os.path.join(BASE_DIR, 'logs/'), # Или любой путь куда юзер, запускающий сервер имеет доступ
             'formatter': 'verbose',
             'log_type': 'warning'
@@ -40,20 +40,20 @@ LOGGING = {
         'info': {
             'level': 'INFO',
             'filters': ['info_only'],
-            'class': 'women.log_handlers.InfoHandler',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
             'filename': os.path.join(BASE_DIR, 'logs/'), # Или любой путь куда юзер, запускающий сервер имеет доступ
             'log_type': 'info'
         },
         'debug': {
             'level': 'DEBUG',
             'filters': ['debug_only'],
-            'class': 'women.log_handlers.InfoHandler',
+            'class': 'project.log_handlers.InfoHandler', # Путь к классу InfoHandler
             'filename': os.path.join(BASE_DIR, 'logs/'), # Или любой путь куда юзер, запускающий сервер имеет доступ
             'log_type': 'debug'
         },
         'notify': {
             'level': 'WARNING',
-            'class': 'women.log_handlers.NotifyHandler' # Путь к классу
+            'class': 'project.log_handlers.NotifyHandler' # Путь к классу NotifyHandler
         },
         'console': {
             'class': 'logging.StreamHandler',
@@ -63,16 +63,16 @@ LOGGING = {
     },
     'filters': {
         'error_only': {
-            '()': 'women.filters.ErrorOnlyFilter' # Путь к классу
+            '()': 'project.filters.ErrorOnlyFilter' # Путь к классу ErrorOnlyFilter
         },
         'warning_only': {
-            '()': 'women.filters.WarningOnlyFilter' # Путь к классу
+            '()': 'project.filters.WarningOnlyFilter' # Путь к классу WarningOnlyFilter
         },
         'info_only': {
-            '()': 'women.filters.InfoOnlyFilter' # Путь к классу
+            '()': 'project.filters.InfoOnlyFilter' # Путь к классу InfoOnlyFilter
         },
         'debug_only': {
-            '()': 'women.filters.DebugOnlyFilter' # Путь к классу
+            '()': 'project.filters.DebugOnlyFilter' # Путь к классу DebugOnlyFilter
         }
     },
 
